@@ -12,56 +12,56 @@
     colNamesResumen.detalleResultado = ['Aplicaciones', 'Cantidad de Errores'];
     colNamesResumen.detalleResultadoDetalle = ['Aplicaciones', 'Alto', 'Medio', 'Bajo'];
     colModelResumen.detalleResultado = [{
-            name: 'APLICACION',
-            width: 100,
-            align: 'left',
-            index: 'APLICACION',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+            name: 'APLICACION'
+            , width: 100
+            , align: 'left'
+            , index: 'APLICACION'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 return "<span style='cursor:pointer' onclick='mostrarPagina(" + JSON.stringify(cellvalue) + ");'>" + cellvalue + "</span>";
             }
-        },
-        {
-            name: 'VALOR',
-            width: 35,
-            align: 'center',
-            index: 'VALOR',
-            hidden: false,
-            editable: true
+        }
+        , {
+            name: 'VALOR'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
         }];
     colModelResumen.detalleResultadoDetalle = [
         {
-            name: 'APLICACION',
-            width: 35,
-            align: 'center',
-            index: 'VALOR',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'ALTO',
-            width: 35,
-            align: 'center',
-            index: 'VALOR',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'MEDIO',
-            width: 35,
-            align: 'center',
-            index: 'VALOR',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'BAJO',
-            width: 35,
-            align: 'center',
-            index: 'VALOR',
-            hidden: false,
-            editable: true
+            name: 'APLICACION'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'ALTO'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'MEDIO'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'BAJO'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
         }
                                         ]
 
@@ -79,10 +79,10 @@
             crearGrafica("Impacto " + valorImpactos[i], valorImpactos[i], impacto[i], false);
         }
         $(".group3").colorbox({
-            rel: 'group3',
-            transition: "none",
-            width: "75%",
-            height: "75%"
+            rel: 'group3'
+            , transition: "none"
+            , width: "75%"
+            , height: "75%"
         });
     });
 
@@ -90,6 +90,20 @@
         crearGrafica("Detalle " + nombre, filtro + "Detalle", $.grep(resumenData, function (e) {
             return e.APLICACION == nombre && e.IMPACTO != "Total"
         }), true);
+        var temp = [];
+        temp.push({
+            'APLICACION': nombre
+            , 'ALTO': $.grep(resumenData, function (e) {
+                return e.IMPACTO == 'Alto' && e.APLICACION == nombre
+            })[0].VALOR
+            , 'MEDIO': $.grep(resumenData, function (e) {
+                return e.IMPACTO == 'Medio' && e.APLICACION == nombre
+            })[0].VALOR
+            , 'BAJO': $.grep(resumenData, function (e) {
+                return e.IMPACTO == 'Bajo' && e.APLICACION == nombre
+            })[0].VALOR
+        });
+        grillaResumen(temp, filtro + "Detalle", 'Detalle Impacto ' + nombre, colNamesResumen.detalleResultadoDetalle, colModelResumen.detalleResultadoDetalle, 10, 1);
     }
 
     function mostrarPagina(nombre) {
@@ -101,11 +115,19 @@
         crearGrafica("Impacto " + nombre, nombre, $.grep(resumenData, function (e) {
             return e.IMPACTO == nombre
         }), false);
-        //irArriba();
+        $('#' + nombre + ' .row').last().hide();
+        irArriba()
     }
 
     function irArriba() {
         $("html,body").animate({
             scrollTop: $("#barraMenu").offset().top
-        }, 1000);
+        }, 0);
+    }
+
+    function cerrarDetalle(nombre) {
+        $('#' + nombre + ' .row').last().fadeOut('slow');
+        $("html,body").animate({
+            scrollTop: $("#barraMenu").offset().top
+        }, 600);
     }

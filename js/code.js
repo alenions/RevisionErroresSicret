@@ -136,7 +136,7 @@
                 var rutaCompleta = rutaImagen + nombreAplicacion + "_Error_" + idError + ".PNG";
                 var objeto = JSON.stringify(rutaCompleta);
 
-                return "<a class='group" + idGrupo + " btn btn-default btn-xs' title='" + rowobject.PROBLEMA + "' href='" + rutaCompleta + "'" + ">" +
+                return "<a class='group" + idGrupo + " btn btn-default btn-xs' title='" + 'Ver' + "' href='" + rutaCompleta + "'" + ">" +
                     "<span class='glyphicon glyphicon-eye-open'></span>" +
                     "</a>";
             }

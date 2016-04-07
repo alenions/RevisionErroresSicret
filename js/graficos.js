@@ -71,9 +71,12 @@ function crearGrafica(titulo, tipoResumen, data, tipo) {
                         events: {
                             click: function () {
                                 if (!tipo) {
+                                    
+                                    $('#'+tipoResumen+' .row').last().fadeIn("slow");
                                     $("html,body").animate({
-                                        scrollTop: $("#containerGraphic" + tipoResumen + "Detalle").offset().top
+                                        scrollTop: $(".topeAbajo"+tipoResumen).offset().top
                                     }, 1000);
+                                   
                                     mostrarDetalle(this.name, tipoResumen);
                                 } else {
                                     var resumen = tipoResumen.split("Detalle")

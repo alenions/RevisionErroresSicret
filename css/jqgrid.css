@@ -85,3 +85,16 @@ th.ui-th-column div {
     /*text-align : justify;*/
 }
 
+
+.panel > .panel-heading {
+    background-image: none;
+    background-color: #CF0B0B;
+    color: white;
+	border-radius:3px;
+    font-size: 12px;
+}
+.panel{
+	margin:10px;
+	border:1px solid #47484B;
+	border-radius:3px;
+}
