@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf8">
+    <title>Informe</title>
+    <link rel="stylesheet" href="librerias/jquery/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="librerias/bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" media="screen" href="librerias/jqgrid/css/ui.jqgrid.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen" href="librerias/jqgrid/css/jquery-ui-1.8.20.custom.css" />
+    <link rel="stylesheet" href="librerias/colorbox/colorbox.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/jqgrid.css">
+        
+    <style type="text/css">
+        body {
+        background-color: #eef;
+        }
+        #tabs {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
+        
+        
+        .wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background: #fff;
+				margin: 0 auto;
+				padding: 30px;
+				width: 1000px;
+			}
+    </style>
+<!--     descargar -->
+   <script type="text/javascript" src="librerias/jquery/js/jquery-1.8.2.js"></script>
+   <style type="text/css">
+		${demo.css}
+   </style>
+   <script type="text/javascript" src="js/graficos.js"></script>
+		
+	<script src="librerias/highcharts/js/highcharts.js"></script>
+	<script src="librerias/highcharts/js/highcharts-3d.js"></script>
+	<script src="librerias/highcharts/js/modules/exporting.js"></script>
+	
+    <script src="librerias/jquery/js/jquery-1.11.3.min.js"></script>
+    <script src="librerias/jquery/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="librerias/jqgrid/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/js/grid.locale-es.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/src/jquery.jqGrid.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/js/jquery-ui-1.10.3.custom.js"></script>
+    <script src="librerias/colorbox/jquery.colorbox-min.js"></script>
+
+    <script src="js/info.js" charset="utf8" type="text/javascript"></script>
+    <script src="js/grilla.js" charset="utf8" type="text/javascript"></script>
+    <script src="js/codeResumen.js"  charset="utf8" type="text/javascript"></script>
+</head>
+<body>
+   
+    <div id="tabs">
+    <!-- titulos -->
+    <ul>
+        <li><a href="#Alto">Impacto Alto</a></li>
+        <li><a href="#Medio">Impacto Medio</a></li>
+        <li><a href="#Bajo">Impacto Bajo</a></li>
+        <li><a href="#Total">Impacto Total</a></li>
+    </ul><!-- /titulos -->
+    <!-- Contenido de tabs -->
+    <div class="row" id="Alto">
+    	<div class="col-lg-6">
+        	<div id="Alto" class="jqGrid" style="margin: 70px;">
+           		<table id="idAlto"><tr><td></td></tr></table>
+            	<div id="pieAlto" ></div>
+        	</div>
+        </div>
+        <div class="col-lg-6">
+        	<div id="containerGraphicAlto" style="height: 400px"></div>
+         </div>
+    </div>
+    <div class="row" id="Medio">
+    	<div class="col-lg-6">
+        	<div id="Medio" class="jqGrid" style="margin: 70px;">
+            	<table id="idMedio"><tr><td></td></tr></table>
+            	<div id="pieMedio" ></div>
+        	</div>
+        </div>
+        <div class="col-lg-6">
+         	<div id="containerGraphicMedio" style="height: 400px"></div>
+         </div>
+    </div>
+    <div class="row" id="Bajo">
+    	<div class="col-lg-6">
+        	<div id="Bajo" class="jqGrid" style="margin: 70px;">
+           		<table id="idBajo"><tr><td></td></tr></table>
+            	<div id="pieBajo" ></div>
+        	</div>
+        </div>
+        <div class="col-lg-6">
+         	<div id="containerGraphicBajo" style="height: 400px"></div>
+        </div>
+    </div>
+     <div class="row" id="Total">
+     	<div class="col-lg-6">
+        	<div id="Total" class="jqGrid" style="margin: 70px;">
+            	<table id="idTotal"><tr><td></td></tr></table>
+            	<div id="pieTotal" ></div>
+        	</div>
+        </div>
+        <div class="col-lg-6">
+         	<div id="containerGraphicTotal" style="height: 400px"></div>
+        </div>
+    </div>
+    <!-- /Contenido de tabs saasdadsasdasdadsasdasd -->
+    
+</div>
+</body>
+</html>

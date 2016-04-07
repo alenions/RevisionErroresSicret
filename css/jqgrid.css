@@ -1,0 +1,87 @@
+@CHARSET "ISO-8859-1";
+/******************************************************
+ * CSS que contiene los estilos adicionales de Jqgrid *
+ *****************************************************/
+ 
+ .ui-jqgrid tr.jqgrow td { word-wrap: break-word; /* IE 5.5+ and CSS3 */ white-space: pre-wrap; /* CSS3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ overflow: hidden; height: auto; vertical-align: middle; padding-top: 3px; padding-bottom: 3px; }
+/*.ui-jqgrid tr.jqgrow td { white-space: normal !important; height: auto; vertical-align: text-top; padding-top: 2px; }*/
+th.ui-th-column div {  word-wrap: break-word; /* IE 5.5+ and CSS3 */ white-space: pre-wrap; /* CSS3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ overflow: hidden; height: auto; vertical-align: middle; padding-top: 3px; padding-bottom: 3px;  }
+
+.cg-DivItem { word-wrap: break-word; /* IE 5.5+ and CSS3 */ white-space: pre-wrap; /* CSS3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ overflow: hidden; height: auto; vertical-align: middle; padding-top: 3px; padding-bottom: 3px; }
+/*.ui-jqgrid tr.jqgrow td { white-space: normal !important; height: auto; vertical-align: text-top; padding-top: 2px; }*/
+th.ui-th-column div {  word-wrap: break-word; /* IE 5.5+ and CSS3 */ white-space: pre-wrap; /* CSS3 */ white-space: -moz-pre-wrap; /* Mozilla, since 1999 */ white-space: -pre-wrap; /* Opera 4-6 */ white-space: -o-pre-wrap; /* Opera 7 */ overflow: hidden; height: auto; vertical-align: middle; padding-top: 3px; padding-bottom: 3px;  }
+
+#cg-divHeader{
+	padding: 0px !important;
+}
+th.ui-th-column div {
+    white-space: normal !important;
+    height: auto !important;
+    padding: 2px;
+    font-size: 10px;
+}
+.jqGrid td{
+    font-size: 12px;
+}
+
+#cboxTitle{
+	background-color:#000 !important;
+	margin-right:100px;
+	border:solid 1px #999;
+	padding:5px;
+	font-size: 16px;
+}
+
+.Bajo{
+    background-color: #3DC866;
+}
+.Alto{
+    background-color: red;
+}
+.Medio{
+    background-color: darkorange; 
+}
+.Bajo, .Alto, .Medio{
+    display:block;
+    background-image:none;
+    margin-right:-2px;
+    margin-left:-2px;
+    height:auto;
+    padding:2px;
+    color:white;
+    text-align: center;
+    font-weight: bold; 
+    border-radius: 4px;
+    border: solid 1px #ccc;
+}
+#mostrarInformacion{
+    padding: 5px !important;
+    font-size: 18px !important;
+}
+
+/**************************************************
+ * CSS que contiene los estilos de Ventanas Modal *
+ **************************************************/
+ 
+.modal-header{
+    height: 25px !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    margin: 2px !important;
+    background-color: #B31A15 !important;
+    color: floralwhite;
+    border-radius: 5px;
+}
+.modal-title{
+    font-size: 18px !important;
+    line-height: 15px !important;
+    font: bold 16px Verdana, Arial, Helvetica, sans-serif !important;
+}
+.modal-body{
+    font-size: 19px !important;
+    color:darkslategrey;
+    /*line-height: 15px !important;*/
+    /*font:  18px Verdana, Arial, Helvetica, sans-serif !important;*/
+    /*text-align : justify;*/
+}
+

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf8">
+    <title>Informe</title>
+    <link rel="stylesheet" href="librerias/jquery/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="librerias/bootstrap/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" media="screen" href="librerias/jqgrid/css/ui.jqgrid.css" /> 
+    <link rel="stylesheet" type="text/css" media="screen" href="librerias/jqgrid/css/jquery-ui-1.8.20.custom.css" />
+    <link rel="stylesheet" href="librerias/colorbox/colorbox.css">
+    
+    <link rel="stylesheet" type="text/css" href="css/jqgrid.css">
+        
+    <style type="text/css">
+        body {
+        background-color: #eef;
+        }
+        #tabs {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 10px;
+        }
+        
+        
+        .wide {
+				border-bottom: 1px #000 solid;
+				width: 4000px;
+			}
+			
+			.fleft { float: left; margin: 0 20px 0 0; }
+			
+			.cboth { clear: both; }
+			
+			#main {
+				background: #fff;
+				margin: 0 auto;
+				padding: 30px;
+				width: 1000px;
+			}
+    </style>
+    <link rel="stylesheet" href="css/barra.css">
+    <script src="librerias/jquery/js/jquery-1.8.2.js"></script>
+    <script src="librerias/jquery/js/jquery-ui.js" type="text/javascript"></script>
+    
+
+    <script type="text/javascript" src="librerias/jqgrid/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/js/grid.locale-es.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/src/jquery.jqGrid.js"></script>
+    <script type="text/javascript" src="librerias/jqgrid/js/jquery-ui-1.10.3.custom.js"></script>
+    <script src="librerias/colorbox/jquery.colorbox-min.js"></script>
+    <script src="librerias/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="js/info.js" charset="utf8" type="text/javascript"></script>
+    <script src="js/grilla.js" charset="utf8" type="text/javascript"></script>
+    <script src="js/code.js"  charset="utf8" type="text/javascript"></script>
+</head>
+<body>
+  
+   <!-- Menu -->
+   <div class="menu navbar navbar-default" id="barraMenu">
+       <div class="container">
+           <a href="" class="navbar-brand">Revisión Funcionamiento Sicret IE11</a>
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle" 
+                   data-toggle="collapse" 
+                   data-target=".navbar-collapse">
+                   <span class="sr-only">Toggle navegation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                </button>
+           </div>
+           <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                   <li><a href="resumen.html">Resumen</a></li>
+                   <li><a href="tablas.html">Tablas</a></li>
+               </ul>
+           </div>
+       </div>
+   </div>
+   <!-- /Menu -->
+   
+   
+    <div id="tabs">
+    <!-- titulos -->
+    <ul>
+        <li onclick="mostrarPestana('MenuCorpSicret2013');"><a href="#MenuCorpSicret2013">MenuCorpSicret2013</a></li>
+        <li onclick="mostrarPestana('Instalaciones');"><a href="#Instalaciones">Instalaciones</a></li>
+        <li onclick="mostrarPestana('AdministradorPuertos');"><a href="#AdministradorPuertos">AdministradorPuertos</a></li>
+        <li onclick="mostrarPestana('MantenedorSicret');"><a href="#MantenedorSicret">MantenedorSicret</a></li>
+        <li onclick="mostrarPestana('AtencionClientes');"><a href="#AtencionClientes">AtencionClientes</a></li>
+        <li onclick="mostrarPestana('GestorActividades');"><a href="#GestorActividades">GestorActividades</a></li>
+        <li onclick="mostrarPestana('PerfilCliente');"><a href="#PerfilCliente">PerfilCliente</a></li>
+        <li onclick="mostrarPestana('Contactos');"><a href="#Contactos">Contactos</a></li>
+        <li onclick="mostrarPestana('GestionComercial');"><a href="#GestionComercial">GestionComercial</a></li>
+        <li onclick="mostrarPestana('SVentaProducto');"><a href="#SVentaProducto">SVentaProducto</a></li>
+    </ul><!-- /titulos -->
+    <!-- Contenido de tabs -->
+    <div id="MenuCorpSicret2013">
+        <div id="MenuCorpSicret2013" class="jqGrid ">
+            <table id="idMenuCorpSicret2013"><tr><td></td></tr></table>
+            <div id="pieMenuCorpSicret2013" ></div>
+        </div>
+    </div>
+    <div id="Instalaciones">
+        <div id="Instalaciones" class="jqGrid ">
+            <table id="idInstalaciones"><tr><td></td></tr></table>
+            <div id="pieInstalaciones" ></div>
+        </div>
+    </div>
+    <div id="AdministradorPuertos">
+        <div id="AdministradorPuertos" class="jqGrid ">
+            <table id="idAdministradorPuertos"><tr><td></td></tr></table>
+            <div id="pieAdministradorPuertos" ></div>
+        </div>
+    </div>
+    <div id="MantenedorSicret">
+        <div id="MantenedorSicret" class="jqGrid ">
+            <table id="idMantenedorSicret"><tr><td></td></tr></table>
+            <div id="pieMantenedorSicret" ></div>
+        </div>
+    </div>
+    <div id="AtencionClientes">
+        <div id="AtencionClientes" class="jqGrid ">
+            <table id="idAtencionClientes"><tr><td></td></tr></table>
+            <div id="pieAtencionClientes" ></div>
+        </div>
+    </div>
+    <div id="GestorActividades">
+        <div id="GestorActividades" class="jqGrid ">
+            <table id="idGestorActividades"><tr><td></td></tr></table>
+            <div id="pieGestorActividades" ></div>
+        </div>
+    </div>
+    <div id="PerfilCliente">
+        <div id="PerfilCliente" class="jqGrid ">
+            <table id="idPerfilCliente"><tr><td></td></tr></table>
+            <div id="piePerfilCliente" ></div>
+        </div>
+    </div>
+    <div id="Contactos">
+        <div id="Contactos" class="jqGrid ">
+            <table id="idContactos"><tr><td></td></tr></table>
+            <div id="pieContactos" ></div>
+        </div>
+    </div>
+    <div id="GestionComercial">
+        <div id="GestionComercial" class="jqGrid ">
+            <table id="idGestionComercial"><tr><td></td></tr></table>
+            <div id="pieGestionComercial" ></div>
+        </div>
+    </div>
+    <div id="SVentaProducto">
+        <div id="SVentaProducto" class="jqGrid ">
+            <table id="idSVentaProducto"><tr><td></td></tr></table>
+            <div id="pieSVentaProducto" ></div>
+        </div>
+    </div>
+    <!-- /Contenido de tabs -->
+    <div style="display:none">
+        <div id="mostrarInformacion"></div>
+        <a class='inline' href="#mostrarInformacion">Inline HTML</a>
+    </div>
+    
+<!-- Modal Mensajes-->
+<div class="modal fade " id="modalMensajes" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog " style="margin-top:100px;" role="document">
+    <div class="modal-content" style="max-width: 800px; margin: 0 auto;">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel"><span id="tituloMensaje"></span></h4>
+      </div>
+      <div class="modal-body" style="height: auto;">
+	      <br>
+	      	<span id="infoMensaje"></span>
+	      <br><br>
+      </div>
+      <div class="modal-footer ui-state-default">
+	        <button type="button" class="btn btn-default" id ="btnMensajeSimple" onclick="" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- fin Modal Mensajes-->
+
+</div>
+
+<div onclick="irArriba()" style="cursor:pointer; position: fixed !important; margin-right:20px; margin-bottom:20px; right:0px; bottom:0px; z-index:10 !important; background-color:white; width:270px; border-radius:5px; border:1px solid #F2F2F2">
+ <strong style="margin-left:20px; display:inline-block;">Desarrollado por:</strong>
+ <img src="imagenes/logo.jpg" style="width:100px; display:inline-block;"/>
+</div>
+</body>
+</html>
