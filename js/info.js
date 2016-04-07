@@ -55,46 +55,76 @@ var data = [{'ACCION':'Se inicia Sicret.','PROBLEMA':'Se visualiza que el cuadro
 {'ACCION':'Se ingresa a Sicret, "Sistema Gestión Comercial" y se selecciona "Administrador de Bajas por Deudas/ Bajas Masivas por deuda"','PROBLEMA':'Al ingresar a pantalla de "Bajas Masivas por deuda" se encuentra botones fuera de los márgenes.','NECESITA':'Se debe ajustar botones al interior de los márgenes que contienen la página.','APLICACION':'/GestionComercial','IMPACTO':'Bajo','PARIDAD':'Sí','ID_ERROR':'18','ID_GRUPO':'9'}	,
 {'ACCION':'Se ingresa a Sicret, "Sistema Gestión Comercial" y se selecciona "Ventas de Equipos y Otros"','PROBLEMA':'Al ingresar a "Ventas de Equipos y Otros" no muestra contenido.','NECESITA':'Se debe mostrar la página, ya que solo muestra un contenedor rojo.','APLICACION':'/SVentaProducto','IMPACTO':'Alto','PARIDAD':'Sí','ID_ERROR':'1','ID_GRUPO':'10'}	
 ];
+
+
 //Data de valores de tablas de Resumen
-var resumenData = [
-//Resumen bajo
-{'APLICACION':'MenuCorpSicret2013'  ,'IMPACTO':'Bajo', 'VALOR':'2' },
-{'APLICACION':'Instalaciones'	    ,'IMPACTO':'Bajo', 'VALOR':'7' },
-{'APLICACION':'AdministradorPuertos','IMPACTO':'Bajo', 'VALOR':'1' },
-{'APLICACION':'MantenedorSicret'    ,'IMPACTO':'Bajo', 'VALOR':'4' },
-{'APLICACION':'AtencionClientes'    ,'IMPACTO':'Bajo', 'VALOR':'3' },
-{'APLICACION':'GestorActividades'   ,'IMPACTO':'Bajo', 'VALOR':'1' },
-{'APLICACION':'PerfilCliente'       ,'IMPACTO':'Bajo', 'VALOR':'1' },
-{'APLICACION':'Contactos'           ,'IMPACTO':'Bajo', 'VALOR':'7' },
-{'APLICACION':'GestionComercial'    ,'IMPACTO':'Bajo', 'VALOR':'10'},
-//Resumen Medio
-{'APLICACION':'MenuCorpSicret2013'  ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'Instalaciones'	    ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'AdministradorPuertos','IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'MantenedorSicret'    ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'AtencionClientes'    ,'IMPACTO':'Medio','VALOR':'5' },
-{'APLICACION':'GestorActividades'   ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'PerfilCliente'       ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'Contactos'           ,'IMPACTO':'Medio','VALOR':'0' },
-{'APLICACION':'GestionComercial'    ,'IMPACTO':'Medio','VALOR':'3' },
-//Resumen Alto
-{'APLICACION':'MenuCorpSicret2013'  ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'Instalaciones'	    ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'AdministradorPuertos','IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'MantenedorSicret'    ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'AtencionClientes'    ,'IMPACTO':'Alto', 'VALOR':'6' },
-{'APLICACION':'GestorActividades'   ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'PerfilCliente'       ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'Contactos'           ,'IMPACTO':'Alto', 'VALOR':'0' },
-{'APLICACION':'GestionComercial'    ,'IMPACTO':'Alto', 'VALOR':'6' },
-//Resumen Total
-{'APLICACION':'MenuCorpSicret2013'  ,'IMPACTO':'Total','VALOR':'2' },
-{'APLICACION':'Instalaciones'	    ,'IMPACTO':'Total','VALOR':'7' },
-{'APLICACION':'AdministradorPuertos','IMPACTO':'Total','VALOR':'1' },
-{'APLICACION':'MantenedorSicret'    ,'IMPACTO':'Total','VALOR':'4' },
-{'APLICACION':'AtencionClientes'    ,'IMPACTO':'Total','VALOR':'14' },
-{'APLICACION':'GestorActividades'   ,'IMPACTO':'Total','VALOR':'1' },
-{'APLICACION':'PerfilCliente'       ,'IMPACTO':'Total','VALOR':'1' },
-{'APLICACION':'Contactos'           ,'IMPACTO':'Total','VALOR':'7' },
-{'APLICACION':'GestionComercial'    ,'IMPACTO':'Total','VALOR':'19' }
-];
+function obtenerNombres(data){
+	var nombres = [];
+	var impactos = [];
+    var paridad = [];
+	var datos = {};
+	for (var i = 0; i < data.length; i++) {
+		nombres.push(data[i].APLICACION);
+		impactos.push(data[i].IMPACTO);
+        paridad.push(data[i].PARIDAD);
+	}
+	datos = {
+		'nombres':nombres,
+		'impactos':impactos,
+        'paridad':paridad
+	}
+	return datos
+}
+
+Array.prototype.unique=function(a){
+  return function(){return this.filter(a)}}(function(a,b,c){return c.indexOf(a,b+1)<0
+});
+
+function nuevaData(){
+	var nombres = obtenerNombres(data).nombres.unique();
+	var impactos = obtenerNombres(data).impactos.unique();
+    
+	var nuevaData = [];
+    var nuevaDataTotal = [];
+    
+	for (var i = 0; i < nombres.length; i++) {
+		for(var j = 0; j < impactos.length; j++){
+            var valor = $.grep(data, function (e) { return e.APLICACION == nombres[i] && e.IMPACTO ==impactos[j]}).length;
+            
+			nuevaData.push({
+				'APLICACION': nombres[i].split('/')[1] ,
+				'IMPACTO'	: impactos[j], 
+				'VALOR'		: valor.toString()
+		});
+           
+	   }
+        var valorTotal = $.grep(data, function (e) { return e.APLICACION == nombres[i]}).length;
+         nuevaDataTotal.push({
+              'APLICACION'  : nombres[i].split('/')[1] ,
+              'IMPACTO'	    : 'Total', 
+              'VALOR'		: valorTotal.toString()
+          });
+    }
+              
+    nuevaData = nuevaData.concat(nuevaDataTotal);
+	return nuevaData;
+}
+
+function obtenerParidad(){
+    var nombres = obtenerNombres(data).nombres.unique();
+    var paridad = obtenerNombres(data).paridad.unique();
+    var nuevaData = [];
+    for (var i = 0; i < nombres.length; i++) {
+		for(var j = 0; j < paridad.length; j++){
+            var valor = $.grep(data, function (e) { return e.APLICACION == nombres[i] && e.PARIDAD ==paridad[j]}).length;
+            nuevaData.push({
+				'APLICACION': nombres[i].split('/')[1] ,
+				'PARIDAD'	: paridad[j], 
+				'VALOR'		: valor.toString()
+		});
+        }
+    }
+    return nuevaData;
+}
+
+var resumenData = nuevaData()
