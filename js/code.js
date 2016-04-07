@@ -263,7 +263,7 @@
         });
     });
 
-    $(document).bind('cbox_complete', function () {
+    $(document).bind('cbox_complete', function (){
         $('#cboxContent').css('margin-top', '60px');
         $('#cboxTitle').css('margin-top', '-40px');
     });
