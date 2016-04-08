@@ -11,6 +11,7 @@
 
     colNamesResumen.detalleResultado = ['Aplicaciones', 'Cantidad de Errores'];
     colNamesResumen.detalleResultadoDetalle = ['Aplicaciones', 'Alto', 'Medio', 'Bajo'];
+    colNamesResumen.detalleResultadoParidad = ['Aplicaciones', 'IE11','SI','NO'];
     colModelResumen.detalleResultado = [{
             name: 'APLICACION'
             , width: 100
@@ -64,6 +65,40 @@
             , editable: true
         }
                                         ]
+    colModelResumen.detalleResultadoParidad = [
+        {
+            name: 'APLICACION'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        },
+        {
+            name: 'VALORIE11'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        },
+        {
+            name: 'VALORIE8SI'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        },
+        {
+            name: 'VALORIE8NO'
+            , width: 35
+            , align: 'center'
+            , index: 'VALOR'
+            , hidden: false
+            , editable: true
+        }
+                                                ]
 
 
     $(document).ready(function () {
@@ -78,12 +113,7 @@
             grillaResumen(impacto[i], valorImpactos[i], ' ', colNamesResumen.detalleResultado, colModelResumen.detalleResultado, 10, 1);
             crearGrafica("Impacto " + valorImpactos[i], valorImpactos[i], impacto[i], false);
         }
-        $(".group3").colorbox({
-            rel: 'group3'
-            , transition: "none"
-            , width: "75%"
-            , height: "75%"
-        });
+        irArriba();
     });
 
     function mostrarDetalle(nombre, filtro) {
@@ -104,6 +134,19 @@
             })[0].VALOR
         });
         grillaResumen(temp, filtro + "Detalle", 'Detalle Impacto ' + nombre, colNamesResumen.detalleResultadoDetalle, colModelResumen.detalleResultadoDetalle, 10, 1);
+        
+        var paridad = [];
+        var totalParidad = obtenerParidad();
+        var ie8si = parseInt($.grep(totalParidad, function (e) {return e.APLICACION== nombre && e.PARIDAD == 'Sí' })[0].VALOR);
+        var ie8no = parseInt($.grep(totalParidad, function (e) {return e.APLICACION== nombre && e.PARIDAD == 'No' })[0].VALOR);
+        paridad.push({
+            APLICACION:nombre,
+            VALORIE11:ie8no+ie8si,
+            VALORIE8SI:ie8si,
+            VALORIE8NO:ie8no
+        });
+        grillaResumen(paridad, filtro + "DetalleParidad", 'Detalle Impacto ' + nombre + ' Paridad', colNamesResumen.detalleResultadoParidad, colModelResumen.detalleResultadoParidad, 10, 1);
+    
     }
 
     function mostrarPagina(nombre) {
@@ -120,9 +163,7 @@
     }
 
     function irArriba() {
-        $("html,body").animate({
-            scrollTop: $("#barraMenu").offset().top
-        }, 0);
+        $('body,html').animate({scrollTop : 0}, 500);
     }
 
     function cerrarDetalle(nombre) {

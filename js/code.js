@@ -136,7 +136,7 @@
                 var rutaCompleta = rutaImagen + nombreAplicacion + "_Error_" + idError + ".PNG";
                 var objeto = JSON.stringify(rutaCompleta);
 
-                return "<a class='group" + idGrupo + " btn btn-default btn-xs' title='" + 'Ver' + "' href='" + rutaCompleta + "'" + ">" +
+                return "<a class='group" + idGrupo + " btn btn-default btn-xs' title='" + rowobject.PROBLEMA + "' href='" + rutaCompleta + "'" + ">" +
                     "<span class='glyphicon glyphicon-eye-open'></span>" +
                     "</a>";
             }
@@ -171,9 +171,7 @@
     }
 
     function irArriba() {
-        $("html,body").animate({
-            scrollTop: $("#barraMenu").offset().top
-        }, 1000);
+        $('body,html').animate({scrollTop : 0}, 500);
     }
 
     $(document).ready(function () {
@@ -261,9 +259,16 @@
             inline: true,
             width: "50%"
         });
+        
+        irArriba()
     });
 
     $(document).bind('cbox_complete', function (){
+        $('#cboxTitle').addClass('animated fadeInLeft');
         $('#cboxContent').css('margin-top', '60px');
+        $('#cboxLoadedContent').addClass('animated pulse');
         $('#cboxTitle').css('margin-top', '-40px');
+        
+        $('#cboxTitle').removeClass('animated fadeInLeft');
     });
+

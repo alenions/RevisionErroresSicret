@@ -70,7 +70,8 @@ function grillaResumen(obj, dato, tituloTabla, colNamesT, colModelT, filas, pagi
         autoencode: true,
         ignoreCase: true,
         autowidth: true,
-        shrinkToFit: false
+        shrinkToFit: false,
+        useColSpanStyle: false
     });
     var newWidth2 = $("#tabs").width() * 0.4;
     $("#id" + dato).jqGrid("setGridWidth", newWidth2, true);
@@ -78,4 +79,13 @@ function grillaResumen(obj, dato, tituloTabla, colNamesT, colModelT, filas, pagi
     $('#id' + dato).trigger('reloadGrid', [{
         page: pag
     }]);
+    if(dato.split("Paridad").length > 1){
+        $("#id" + dato).jqGrid('setGroupHeaders', {
+          useColSpanStyle: false, 
+          groupHeaders:[
+            {startColumnName: 'APLICACION', numberOfColumns: 2, titleText: ''},
+            {startColumnName: 'VALORIE8SI', numberOfColumns: 2, titleText: 'Encontrados en IE8'}
+          ]
+        });
+    }
 }
