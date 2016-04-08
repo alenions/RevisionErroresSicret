@@ -5,7 +5,12 @@
     <title>Informe</title>
     <script>
     function principal(){
-        window.location = "resumen.html";
+        if(navigator.appName == "Microsoft Internet Explorer"){
+            alert("Por favor, ejecutar en otro navegador");
+        }else{
+            window.location = "resumen.html";
+        }
+        
     }
     </script>
 </head>
