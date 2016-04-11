@@ -46,89 +46,89 @@
     colNames.detalleResultado = ['Id', 'Acción', 'Problema', 'Necesita', 'Aplicación', 'Impacto', 'Paridad', '', ''];
     colModel.detalleResultado = [
         {
-            name: 'ID_ERROR',
-            width: 15,
-            align: 'center',
-            index: 'ID_ERROR',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'ACCION',
-            width: 150,
-            align: 'left',
-            index: 'ACCION',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+            name: 'ID_ERROR'
+            , width: 15
+            , align: 'center'
+            , index: 'ID_ERROR'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'ACCION'
+            , width: 150
+            , align: 'left'
+            , index: 'ACCION'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 return "<span style='cursor:pointer' onclick='mostrar(" + JSON.stringify(cellvalue) + "," + JSON.stringify('Acción realizada') + ");'>" + cellvalue + "</span>";
             }
-        },
-        {
-            name: 'PROBLEMA',
-            width: 200,
-            align: 'left',
-            index: 'PROBLEMA',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+        }
+        , {
+            name: 'PROBLEMA'
+            , width: 200
+            , align: 'left'
+            , index: 'PROBLEMA'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 return "<span style='cursor:pointer' onclick='mostrar(" + JSON.stringify(cellvalue) + "," + JSON.stringify('Problema Encontrado') + ");'>" + cellvalue + "</span>";
             }
-        },
-        {
-            name: 'NECESITA',
-            width: 200,
-            align: 'left',
-            index: 'NECESITA',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+        }
+        , {
+            name: 'NECESITA'
+            , width: 200
+            , align: 'left'
+            , index: 'NECESITA'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 return "<span style='cursor:pointer' onclick='mostrar(" + JSON.stringify(cellvalue) + "," + JSON.stringify('Se Necesita') + ");'>" + cellvalue + "</span>";
             }
-        },
-        {
-            name: 'APLICACION',
-            width: 75,
-            align: 'left',
-            index: 'APLICACION',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'IMPACTO',
-            width: 30,
-            align: 'center',
-            index: 'IMPACTO',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+        }
+        , {
+            name: 'APLICACION'
+            , width: 75
+            , align: 'left'
+            , index: 'APLICACION'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'IMPACTO'
+            , width: 30
+            , align: 'center'
+            , index: 'IMPACTO'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 return "<span class='" + rowobject.IMPACTO + "' >" + rowobject.IMPACTO + "</span>";
             }
-        },
-        {
-            name: 'PARIDAD',
-            width: 30,
-            align: 'center',
-            index: 'PARIDAD',
-            hidden: false,
-            editable: true
-        },
-        {
-            name: 'ID_GRUPO',
-            width: 30,
-            align: 'left',
-            index: 'ID_GRUPO',
-            hidden: true,
-            editable: true
-        },
-        {
-            name: 'ID_ERROR',
-            width: 18,
-            align: 'center',
-            index: 'ID_ERROR',
-            hidden: false,
-            editable: true,
-            formatter: function (cellvalue, options, rowobject) {
+        }
+        , {
+            name: 'PARIDAD'
+            , width: 30
+            , align: 'center'
+            , index: 'PARIDAD'
+            , hidden: false
+            , editable: true
+        }
+        , {
+            name: 'ID_GRUPO'
+            , width: 30
+            , align: 'left'
+            , index: 'ID_GRUPO'
+            , hidden: true
+            , editable: true
+        }
+        , {
+            name: 'ID_ERROR'
+            , width: 18
+            , align: 'center'
+            , index: 'ID_ERROR'
+            , hidden: false
+            , editable: true
+            , formatter: function (cellvalue, options, rowobject) {
                 var rutaImagen = "imagenes";
                 var nombreAplicacion = rowobject.APLICACION;
                 var idError = rowobject.ID_ERROR;
@@ -171,10 +171,16 @@
     }
 
     function irArriba() {
-        $('body,html').animate({scrollTop : 0}, 500);
+        $('body,html').animate({
+            scrollTop: 0
+        }, 500);
     }
 
     $(document).ready(function () {
+
+        $('body').append(mdivtabs);
+        $('body').append(menuDiv1);
+
         // Declacion tabs 
         $("#tabs").tabs({
             activate: function (event, ui) {
@@ -196,79 +202,78 @@
 
         //declarar grupos de imagenes
         $(".group1").colorbox({
-            rel: 'group1',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group1'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group2").colorbox({
-            rel: 'group2',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group2'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group3").colorbox({
-            rel: 'group3',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group3'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group4").colorbox({
-            rel: 'group4',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group4'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group5").colorbox({
-            rel: 'group5',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group5'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group6").colorbox({
-            rel: 'group6',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group6'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group7").colorbox({
-            rel: 'group7',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group7'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group8").colorbox({
-            rel: 'group8',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group8'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group9").colorbox({
-            rel: 'group9',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group9'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".group10").colorbox({
-            rel: 'group10',
-            transition: "none",
-            width: "95%",
-            height: "95%"
+            rel: 'group10'
+            , transition: "none"
+            , width: "95%"
+            , height: "95%"
         });
         $(".inline").colorbox({
-            inline: true,
-            width: "50%"
+            inline: true
+            , width: "50%"
         });
-        
+
         irArriba()
     });
 
-    $(document).bind('cbox_complete', function (){
+    $(document).bind('cbox_complete', function () {
         $('#cboxTitle').addClass('animated fadeInLeft');
         $('#cboxContent').css('margin-top', '60px');
         $('#cboxLoadedContent').addClass('animated pulse');
         $('#cboxTitle').css('margin-top', '-40px');
-        
+
         $('#cboxTitle').removeClass('animated fadeInLeft');
     });
-
